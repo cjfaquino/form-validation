@@ -11,7 +11,7 @@
       <form novalidate>
         <div class="input-item">
           <label for="email">Email:</label>
-          <input type="email" name="email" id="email" />
+          <input type="email" name="email" id="email" required />
           <span class="error" aria-live="polite"></span>
         </div>
 
@@ -23,13 +23,13 @@
 
         <div class="input-item">
           <label for="zip-code">Zip Code:</label>
-          <input type="number" name="zip-code" id="zip-code" />
+          <input type="number" name="zip-code" id="zip-code" required />
           <span class="error" aria-live="polite"></span>
         </div>
 
         <div class="input-item">
           <label for="password">Password:</label>
-          <input type="password" name="password" id="password" />
+          <input type="password" name="password" id="password" required />
           <span class="error" aria-live="polite"></span>
         </div>
 
@@ -39,6 +39,7 @@
             type="password"
             name="password-confirm"
             id="password-confirm"
+            required
           />
           <span class="error" aria-live="polite"></span>
         </div>
