@@ -17,7 +17,18 @@ const passwordConfirmError = form.querySelector(
   "#password-confirm + span.error"
 );
 
-const showError = (input, error) => {
+zipCode.minLength = 5;
+zipCode.maxLength = 5;
+zipCode.pattern = "[0-9]*";
+
+const getSibling = (currentNode) => {
+  const nextSibling = currentNode.nextElementSibling;
+  return nextSibling;
+};
+
+const showError = (input) => {
+  console.log(input.validity);
+  const error = getSibling(input);
   // email messages
   if (input.name === "email") {
     if (input.validity.valueMissing) {
@@ -29,11 +40,24 @@ const showError = (input, error) => {
     }
     error.className = "error active";
   }
-};
 
-const getSibling = (currentNode) => {
-  const nextSibling = currentNode.nextElementSibling;
-  return nextSibling;
+  // zipCode messages
+  else if (input.name === "zip-code") {
+    if (input.validity.valueMissing) {
+      error.textContent = "You need to enter a zip code.";
+    } else if (
+      input.validity.typeMismatch ||
+      input.validity.badInput ||
+      input.validity.patternMismatch
+    ) {
+      error.textContent = "Entered value needs to be a 5 digit number.";
+    } else if (input.validity.tooShort || input.validity.rangeUnderflow) {
+      error.textContent = `Zip code should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
+    } else if (input.validity.tooLong || input.validity.rangeOverflow) {
+      error.textContent = `Zip code should be no more than ${input.maxLength} characters; you entered ${input.value.length}.`;
+    }
+    error.className = "error active";
+  }
 };
 
 const checkValid = (input) => {
@@ -42,7 +66,7 @@ const checkValid = (input) => {
     if (input.validity.valid) {
       error.textContent = "";
       error.className = "error";
-    } else showError(input, error);
+    } else showError(input);
   };
 };
 
