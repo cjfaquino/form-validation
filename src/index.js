@@ -16,7 +16,7 @@ const passwordConfirm = form.querySelector("#password-confirm");
 const passwordConfirmError = form.querySelector(
   "#password-confirm + span.error"
 );
-
+console.log(country.name);
 zipCode.minLength = 5;
 zipCode.maxLength = 5;
 zipCode.pattern = "[0-9]*";
@@ -41,6 +41,12 @@ const showError = (input) => {
     } else if (input.validity.tooShort) {
       error.textContent = `Email should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
     }
+    error.className = "error active";
+  }
+
+  // country messages
+  else if (input.name === "country") {
+    error.textContent = "Please choose a country";
     error.className = "error active";
   }
 
@@ -93,6 +99,8 @@ const checkValid = (input) => {
   return () => {
     if (password.value !== passwordConfirm.value) {
       showError(input);
+    } else if (input.name === "country" && input.value === "") {
+      showError(input);
     } else if (input.validity.valid) {
       error.textContent = "";
       error.className = "error";
@@ -102,4 +110,20 @@ const checkValid = (input) => {
 
 inputs.forEach((input) => {
   input.addEventListener("input", checkValid(input));
+});
+
+country.addEventListener("change", checkValid(country));
+
+form.addEventListener("submit", (event) => {
+  inputs.forEach((input) => {
+    if (!input.validity.valid) {
+      showError(input);
+      event.preventDefault();
+    }
+  });
+
+  if (country.value === "") {
+    showError(country);
+    event.preventDefault();
+  }
 });
