@@ -76,12 +76,24 @@ const showError = (input) => {
     }
     error.className = "error active";
   }
+
+  // password confirm messaages
+  else if (input.name === "password-confirm") {
+    if (input.validity.valueMissing) {
+      error.textContent = "Please re-enter password here.";
+    } else if (input.value !== password.value) {
+      error.textContent = "Passwords do not match.";
+    }
+    error.className = "error active";
+  }
 };
 
 const checkValid = (input) => {
   const error = getSibling(input);
   return () => {
-    if (input.validity.valid) {
+    if (password.value !== passwordConfirm.value) {
+      showError(input);
+    } else if (input.validity.valid) {
       error.textContent = "";
       error.className = "error";
     } else showError(input);
