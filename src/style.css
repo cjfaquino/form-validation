@@ -3,3 +3,10 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.error.active {
+  display: inline-block;
+  color: red;
+  font-size: .8rem;
+  width: 200px;
+}
