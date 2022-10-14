@@ -1,3 +1,5 @@
+const password = document.getElementById("password");
+
 export const setEmailError = (input, error) => {
   if (input.validity.valueMissing) {
     error.textContent = "You need to enter an e-mail address.";
@@ -31,7 +33,6 @@ export const setZipError = (input, error) => {
 };
 
 export const setPwdConfirmError = (input, error) => {
-  const password = document.querySelector("#password");
   if (input.validity.valueMissing) {
     error.textContent = "Please re-enter password here.";
   } else if (input.value !== password.value) {
