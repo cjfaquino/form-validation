@@ -39,10 +39,22 @@ select {
   padding: 5px;
   height: 35px;
   border: 1px solid black;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 #zip-code {
   width: 100px;
   text-align: center;
+}
+
+button {
+  float: right;
+  margin-right: 210px;
+  font: inherit;
+  padding: 5px;
+  width: 80px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 3px;
 }
