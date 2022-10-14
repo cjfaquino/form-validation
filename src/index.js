@@ -46,7 +46,9 @@ const showError = (input) => {
 
   // country messages
   else if (input.name === "country") {
-    error.textContent = "Please choose a country";
+    if (input.value === "") {
+      error.textContent = "Please choose a country";
+    }
     error.className = "error active";
   }
 
@@ -97,14 +99,15 @@ const showError = (input) => {
 const checkValid = (input) => {
   const error = getSibling(input);
   return () => {
-    if (password.value !== passwordConfirm.value) {
+    if (
+      !input.validity.valid ||
+      (password.value !== passwordConfirm.value && passwordConfirm.value)
+    ) {
       showError(input);
-    } else if (input.name === "country" && input.value === "") {
-      showError(input);
-    } else if (input.validity.valid) {
+    } else {
       error.textContent = "";
       error.className = "error";
-    } else showError(input);
+    }
   };
 };
 
