@@ -29,70 +29,73 @@ const getSibling = (currentNode) => {
   return nextSibling;
 };
 
+const setEmailError = (input, error) => {
+  if (input.validity.valueMissing) {
+    error.textContent = "You need to enter an e-mail address.";
+  } else if (input.validity.typeMismatch) {
+    error.textContent = "Entered value needs to be an e-mail address.";
+  } else if (input.validity.tooShort) {
+    error.textContent = `Email should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
+  }
+};
+
+const setPwdConfirmError = (input, error) => {
+  if (input.validity.valueMissing) {
+    error.textContent = "Please re-enter password here.";
+  } else if (input.value !== password.value) {
+    error.textContent = "Passwords do not match.";
+  }
+};
+
+const setPasswordError = (input, error) => {
+  if (input.validity.valueMissing) {
+    error.textContent = "You need to enter a password.";
+  } else if (
+    input.validity.typeMismatch ||
+    input.validity.badInput ||
+    input.validity.patternMismatch
+  ) {
+    error.textContent =
+      "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.";
+  }
+};
+
+const setZipError = (input, error) => {
+  if (input.validity.valueMissing) {
+    error.textContent = "You need to enter a zip code.";
+  } else if (
+    input.validity.typeMismatch ||
+    input.validity.badInput ||
+    input.validity.patternMismatch
+  ) {
+    error.textContent = "Entered value needs to be a 5 digit number.";
+  } else if (input.validity.tooShort || input.validity.rangeUnderflow) {
+    error.textContent = `Zip code should be at least ${input.minLength} characters.`;
+  } else if (input.validity.tooLong || input.validity.rangeOverflow) {
+    error.textContent = `Zip code should be no more than ${input.maxLength} characters.`;
+  }
+};
+
+const setCountryError = (input, error) => {
+  if (input.value === "") {
+    error.textContent = "Please choose a country";
+  }
+};
+
 const showError = (input) => {
-  console.log(input.validity);
   const error = getSibling(input);
-  // email messages
+  error.className = "error active";
+
   if (input.name === "email") {
-    if (input.validity.valueMissing) {
-      error.textContent = "You need to enter an e-mail address.";
-    } else if (input.validity.typeMismatch) {
-      error.textContent = "Entered value needs to be an e-mail address.";
-    } else if (input.validity.tooShort) {
-      error.textContent = `Email should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
-    }
-    error.className = "error active";
-  }
-
-  // country messages
-  else if (input.name === "country") {
-    if (input.value === "") {
-      error.textContent = "Please choose a country";
-    }
-    error.className = "error active";
-  }
-
-  // zipCode messages
-  else if (input.name === "zip-code") {
-    if (input.validity.valueMissing) {
-      error.textContent = "You need to enter a zip code.";
-    } else if (
-      input.validity.typeMismatch ||
-      input.validity.badInput ||
-      input.validity.patternMismatch
-    ) {
-      error.textContent = "Entered value needs to be a 5 digit number.";
-    } else if (input.validity.tooShort || input.validity.rangeUnderflow) {
-      error.textContent = `Zip code should be at least ${input.minLength} characters.`;
-    } else if (input.validity.tooLong || input.validity.rangeOverflow) {
-      error.textContent = `Zip code should be no more than ${input.maxLength} characters.`;
-    }
-    error.className = "error active";
-  }
-
-  // password messages
-  else if (input.name === "password") {
-    if (input.validity.valueMissing) {
-      error.textContent = "You need to enter a password.";
-    } else if (
-      input.validity.typeMismatch ||
-      input.validity.badInput ||
-      input.validity.patternMismatch
-    ) {
-      error.textContent =
-        "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.";
-    }
-    error.className = "error active";
-  }
-
-  // password confirm messaages
-  else if (input.name === "password-confirm") {
-    if (input.validity.valueMissing) {
-      error.textContent = "Please re-enter password here.";
-    } else if (input.value !== password.value) {
-      error.textContent = "Passwords do not match.";
-    }
-    error.className = "error active";
+    setEmailError(input, error);
+  } else if (input.name === "country") {
+    setCountryError(input, error);
+  } else if (input.name === "zip-code") {
+    setZipError(input, error);
+  } else if (input.name === "password") {
+    setPasswordError(input, error);
+  } else if (input.name === "password-confirm") {
+    setPwdConfirmError(input, error);
   }
 };
 
