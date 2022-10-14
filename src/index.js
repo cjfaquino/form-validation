@@ -21,6 +21,9 @@ zipCode.minLength = 5;
 zipCode.maxLength = 5;
 zipCode.pattern = "[0-9]*";
 
+password.pattern =
+  "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+
 const getSibling = (currentNode) => {
   const nextSibling = currentNode.nextElementSibling;
   return nextSibling;
@@ -55,6 +58,21 @@ const showError = (input) => {
       error.textContent = `Zip code should be at least ${input.minLength} characters.`;
     } else if (input.validity.tooLong || input.validity.rangeOverflow) {
       error.textContent = `Zip code should be no more than ${input.maxLength} characters.`;
+    }
+    error.className = "error active";
+  }
+
+  // password messages
+  else if (input.name === "password") {
+    if (input.validity.valueMissing) {
+      error.textContent = "You need to enter a password.";
+    } else if (
+      input.validity.typeMismatch ||
+      input.validity.badInput ||
+      input.validity.patternMismatch
+    ) {
+      error.textContent =
+        "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.";
     }
     error.className = "error active";
   }
