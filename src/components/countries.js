@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("https://restcountries.com/v2/all")
     .then((res) => res.json())
     .then((data) => {
-      let output = "<option></option>";
+      let output = "";
       data.forEach((country) => {
         output += `<option>${country.name}</option>`;
       });
-      selectCountry.innerHTML = output;
+      selectCountry.insertAdjacentHTML("beforeend", output);
     })
     .catch((err) => console.log(err));
 });
