@@ -52,9 +52,9 @@ const showError = (input) => {
     ) {
       error.textContent = "Entered value needs to be a 5 digit number.";
     } else if (input.validity.tooShort || input.validity.rangeUnderflow) {
-      error.textContent = `Zip code should be at least ${input.minLength} characters; you entered ${input.value.length}.`;
+      error.textContent = `Zip code should be at least ${input.minLength} characters.`;
     } else if (input.validity.tooLong || input.validity.rangeOverflow) {
-      error.textContent = `Zip code should be no more than ${input.maxLength} characters; you entered ${input.value.length}.`;
+      error.textContent = `Zip code should be no more than ${input.maxLength} characters.`;
     }
     error.className = "error active";
   }
