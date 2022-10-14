@@ -68,13 +68,7 @@ const checkValid = (input) => {
   };
 };
 
-inputs.forEach((input) => {
-  input.addEventListener("input", checkValid(input));
-});
-
-country.addEventListener("change", checkValid(country));
-
-form.addEventListener("submit", (event) => {
+const checkSubmit = (event) => {
   inputs.forEach((input) => {
     if (!input.validity.valid) {
       showError(input);
@@ -86,4 +80,12 @@ form.addEventListener("submit", (event) => {
     showError(country);
     event.preventDefault();
   }
+};
+
+inputs.forEach((input) => {
+  input.addEventListener("input", checkValid(input));
 });
+
+country.addEventListener("change", checkValid(country));
+
+form.addEventListener("submit", checkSubmit);
