@@ -19,6 +19,16 @@ const getSibling = (currentNode) => {
   return nextSibling;
 };
 
+const toggleZipCode = () => {
+  if (country.value === "United States of America") {
+    zipCode.disabled = false;
+    zipLabel.className = "";
+  } else {
+    zipCode.disabled = true;
+    zipLabel.className = "disabled";
+  }
+};
+
 const showError = (input) => {
   const error = getSibling(input);
   error.className = "error active";
@@ -40,10 +50,6 @@ const showError = (input) => {
 const checkValid = (input) => {
   const error = getSibling(input);
   return () => {
-    if (country.value === "United States of America") {
-      zipCode.disabled = false;
-      zipLabel.className = "";
-    }
     if (
       !input.validity.valid ||
       (password.value !== passwordConfirm.value && passwordConfirm.value)
@@ -76,5 +82,6 @@ inputs.forEach((input) => {
 });
 
 country.addEventListener("change", checkValid(country));
+country.addEventListener("change", toggleZipCode);
 
 form.addEventListener("submit", checkSubmit);
