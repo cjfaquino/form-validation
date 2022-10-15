@@ -5,6 +5,16 @@
   box-sizing: border-box;
 }
 
+header {
+  padding: 20px 10px;
+  height: 150px;
+  width: 100%;
+  background-color: rgb(234, 234, 234);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 form {
   padding: 10px;
 }
