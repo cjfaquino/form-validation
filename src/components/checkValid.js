@@ -11,6 +11,7 @@ const inputs = form.querySelectorAll("input");
 const country = form.querySelector("#country");
 const password = form.querySelector("#password");
 const passwordConfirm = form.querySelector("#password-confirm");
+const zipCode = document.querySelector("#zip-code");
 
 const getSibling = (currentNode) => {
   const nextSibling = currentNode.nextElementSibling;
@@ -38,6 +39,9 @@ const showError = (input) => {
 const checkValid = (input) => {
   const error = getSibling(input);
   return () => {
+    if (country.value === "United States of America") {
+      zipCode.disabled = false;
+    }
     if (
       !input.validity.valid ||
       (password.value !== passwordConfirm.value && passwordConfirm.value)

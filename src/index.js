@@ -20,6 +20,7 @@ const password = form.querySelector("#password");
 zipCode.minLength = 5;
 zipCode.maxLength = 5;
 zipCode.pattern = "[0-9]*";
+zipCode.disabled = true;
 
 password.pattern =
   "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
