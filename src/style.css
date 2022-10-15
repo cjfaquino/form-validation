@@ -1,8 +1,3 @@
-:root {
-  --header-height: 70px;
-  --mobile-header-height: 150px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -17,16 +12,6 @@ body {
 
 main {
   height: min-content;
-}
-
-header {
-  padding: 20px 10px;
-  height: var(--mobile-header-height);
-  width: 100%;
-  background-color: rgb(234, 234, 234);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 form {
@@ -88,12 +73,6 @@ button {
 }
 
 @media only screen and (min-width: 610px) {
-  header {
-    height: var(--header-height);
-    justify-content: flex-start;
-    padding-left: 30px;
-  }
-
   form {
     height: 100%;
     display: flex;
