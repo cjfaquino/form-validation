@@ -75,6 +75,9 @@ const checkSubmit = (event) => {
       event.preventDefault();
     }
   });
+  if (form.checkValidity()) {
+    alert("High five! It cleared.");
+  }
 };
 
 inputs.forEach((input) => {
