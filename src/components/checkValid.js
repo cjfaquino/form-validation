@@ -12,6 +12,7 @@ const country = form.querySelector("#country");
 const password = form.querySelector("#password");
 const passwordConfirm = form.querySelector("#password-confirm");
 const zipCode = document.querySelector("#zip-code");
+const zipLabel = form.querySelector("label[for='zip-code']");
 
 const getSibling = (currentNode) => {
   const nextSibling = currentNode.nextElementSibling;
@@ -41,6 +42,7 @@ const checkValid = (input) => {
   return () => {
     if (country.value === "United States of America") {
       zipCode.disabled = false;
+      zipLabel.className = "";
     }
     if (
       !input.validity.valid ||

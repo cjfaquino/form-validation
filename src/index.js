@@ -9,6 +9,7 @@ const form = document.querySelector("form");
 // const country = form.querySelector("#country");
 // const countryError = form.querySelector("#country + span.error");
 const zipCode = form.querySelector("#zip-code");
+const zipLabel = form.querySelector("label[for='zip-code']");
 // const zipCodeError = form.querySelector("#zip-code + span.error");
 const password = form.querySelector("#password");
 // const passwordError = form.querySelector("#password + span.error");
@@ -21,6 +22,7 @@ zipCode.minLength = 5;
 zipCode.maxLength = 5;
 zipCode.pattern = "[0-9]*";
 zipCode.disabled = true;
+zipLabel.className = "disabled";
 
 password.pattern =
   "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
