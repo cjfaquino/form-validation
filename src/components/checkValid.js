@@ -66,7 +66,7 @@ const checkSubmit = (event) => {
 };
 
 inputs.forEach((input) => {
-  input.addEventListener("input", checkValid(input));
+  input.addEventListener("change", checkValid(input));
 });
 
 country.addEventListener("change", checkValid(country));
