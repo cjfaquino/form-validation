@@ -64,21 +64,21 @@ const checkValid = (input) => {
 };
 
 const checkSubmit = (event) => {
+  if (country.value === "") {
+    showError(country);
+    event.preventDefault();
+  }
+
   inputs.forEach((input) => {
     if (!input.validity.valid) {
       showError(input);
       event.preventDefault();
     }
   });
-
-  if (country.value === "") {
-    showError(country);
-    event.preventDefault();
-  }
 };
 
 inputs.forEach((input) => {
-  input.addEventListener("change", checkValid(input));
+  input.addEventListener("input", checkValid(input));
 });
 
 country.addEventListener("change", checkValid(country));
