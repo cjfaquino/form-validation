@@ -50,15 +50,15 @@ select {
 
 }
 
+input.active,
+select.active {
+  border: 1px solid rgb(180, 0, 0);
+}
+
 input:focus,
 select:focus {
   border: 1px solid white;
   outline: none;
-}
-
-input.active,
-select.active {
-  border: 1px solid rgb(180, 0, 0);
 }
 
 label[for='zip-code'].disabled {
