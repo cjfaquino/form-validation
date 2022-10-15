@@ -56,6 +56,11 @@ select:focus {
   outline: none;
 }
 
+input.active,
+select.active {
+  border: 1px solid rgb(180, 0, 0);
+}
+
 button {
   margin-top: 50px;
   font: inherit;
