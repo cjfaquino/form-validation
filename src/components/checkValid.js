@@ -20,6 +20,7 @@ const getSibling = (currentNode) => {
 const showError = (input) => {
   const error = getSibling(input);
   error.className = "error active";
+  input.className = "active";
 
   if (input.name === "email") {
     setEmailError(input, error);
@@ -45,6 +46,7 @@ const checkValid = (input) => {
     } else {
       error.textContent = "";
       error.className = "error";
+      input.className = "";
     }
   };
 };
