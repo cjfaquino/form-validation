@@ -69,3 +69,39 @@ button {
   align-items: flex-start;
   font-size: 1.3rem;
 }
+
+@media only screen and (min-width: 600px) {
+
+  header {
+    height: 70px;
+    justify-content: flex-start;
+    padding-left: 30px;
+  }
+
+  form {
+    padding-top: 50px;
+  }
+
+  label {
+    text-align: right;
+    padding-right: 5px;
+  }
+
+  button {
+    width: 200px;
+    font-size: 1.2rem;
+    float: right;
+    margin-right: 200px;
+  }
+
+  .input-item {
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 70px;
+    align-items: center;
+  }
+
+  .error.active {
+    margin: 0;
+    padding: 0 5px;
+  }
+}
